@@ -36,7 +36,10 @@ class ExportSqsToFile extends Command {
 		this.log(
 			`exporting events content from [${queueUrl}] to [${targetPath}] with ${concurrency} concurrent pollers`
 		);
-		await this.getMessages(queueUrl, concurrency);
+		const messages = await this.getMessages(queueUrl, concurrency);
+
+		this.log(`writing ${messages.length} messages to [${targetPath}]`);
+    await this.writeMessages(targetPath, messages);
 
 		this.log("all done!");
 	}
@@ -89,6 +92,17 @@ class ExportSqsToFile extends Command {
 			return resp.Messages;
 		}
 	}
+
+  async writeMessages(targetPath, messages) {
+    const fs = require("fs");
+    const path = require("path");
+    const { writeFile } = require("../lib/file-utils");
+
+    const filePath = path.resolve(targetPath);
+    const fileDir = path.dirname(filePath);
+    const fileName = path.basename(filePath);
+
+    await writeFile(filePath, messages.map(msg => JSON.stringify(msg)).join("\n"));
 }
 
 ExportSqsToFile.description =
