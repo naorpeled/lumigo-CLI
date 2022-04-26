@@ -23,7 +23,7 @@ $ npm install -g lumigo-cli
 $ lumigo-cli COMMAND
 running command...
 $ lumigo-cli (-v|--version|version)
-lumigo-cli/0.40.1 darwin-x64 node-v14.3.0
+lumigo-cli/0.40.1 darwin-x64 node-v14.15.4
 $ lumigo-cli --help [COMMAND]
 USAGE
   $ lumigo-cli COMMAND
@@ -34,6 +34,7 @@ USAGE
 <!-- commands -->
 * [`lumigo-cli analyze-lambda-cold-starts`](#lumigo-cli-analyze-lambda-cold-starts)
 * [`lumigo-cli analyze-lambda-cost`](#lumigo-cli-analyze-lambda-cost)
+* [`lumigo-cli autocomplete [SHELL]`](#lumigo-cli-autocomplete-shell)
 * [`lumigo-cli clear-account`](#lumigo-cli-clear-account)
 * [`lumigo-cli feedback`](#lumigo-cli-feedback)
 * [`lumigo-cli help [COMMAND]`](#lumigo-cli-help-command)
@@ -97,6 +98,29 @@ OPTIONS
 ```
 
 _See code: [src/commands/analyze-lambda-cost.js](https://github.com/lumigo-io/lumigo-cli/blob/v0.40.1/src/commands/analyze-lambda-cost.js)_
+
+## `lumigo-cli autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ lumigo-cli autocomplete [SHELL]
+
+ARGUMENTS
+  SHELL  shell type
+
+OPTIONS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+EXAMPLES
+  $ lumigo-cli autocomplete
+  $ lumigo-cli autocomplete bash
+  $ lumigo-cli autocomplete zsh
+  $ lumigo-cli autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.2.0/src/commands/autocomplete/index.ts)_
 
 ## `lumigo-cli clear-account`
 
